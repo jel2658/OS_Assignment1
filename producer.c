@@ -37,11 +37,13 @@ int main() { // Much code taken from lectures by the professor, as well as the g
 
     display("Producer before adding numbers. ", base_address, 64);
     for (int i = 0; i < 64; i++) {
-        pointer += sprintf(pointer, "%i", i);
+        pointer += sprintf(pointer, "%i", i); // Add numbers 0 to 64 into the shared memory
     }
-    display("Producer after adding numbers. ", base_address, 64);
+    display("Producer after adding numbers. ", base_address, 64); // Show shared memory after adding numbers
 
-    if (munmap(base_address, FILESIZ) == -1) {
+    printf("Done. Producer exiting...");
+
+    if (munmap(base_address, FILESIZ) == -1) { // Check if unmapping has been successful
         printf("Producer failed to unmap.");
         exit(1);
     }
@@ -89,13 +91,16 @@ int main() { // Much code taken from lectures by the professor, as well as the g
     shm_unlink("/queue");
 
     printf("Producer done.");*/
+
+    printf("Producer finished.\n");
     return 0;
 }
 
 void display(char *prog, char *bytes, int n) {
-    printf("Displaying %i", *prog);
+    printf("\nDisplaying %i", *prog);
     for (int i = 0; i < n; i++) {
         printf("%02x%c", bytes[i], ((i+1)%16) ? ' ' : '\n');
     }
-    printf("\n");
+    //printf("\n");
+    printf("\nFinished displaying (Producer).\n");
 }

@@ -31,9 +31,16 @@ int main() {    // Decent portion of code borrowed from github so that I could m
         printf("Failed to map.");
         exit(1);
     }
-
     display("Consumer", base_address, 64); // The helper function, display... outputs what's in the shared memory
     printf("%s", base_address);
+
+    /*char *pointer = base_address;
+    for (int i = 0; i < 64; i++) {
+        pointer -= *pointer;
+    }
+    display("Consumer", base_address, 64);*/
+
+    printf("Done. Consumer exiting...");
 
     if (munmap(base_address, FILESIZ) == -1) {  // Unmap the shared memory address and check to make sure it's unmapped.
         printf("Failed to unmap.");
@@ -83,6 +90,8 @@ int main() {    // Decent portion of code borrowed from github so that I could m
     shm_unlink("/queue");
 
     printf("Consumer done.");*/
+
+    printf("Consumer finished.\n");
     return 0;
 }
 
@@ -93,5 +102,5 @@ void display(char *prog, char *bytes, int n) { // Print that we are now in the d
         printf("%02x%c", bytes[i], ((i+1)%16) ? ' ' : '\n');
     }
 
-    printf("\n");
+    printf("\nFinished displaying (Consumer).\n");
 }
