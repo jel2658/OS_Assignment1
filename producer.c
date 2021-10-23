@@ -37,7 +37,7 @@ int main() { // Much code taken from lectures by the professor, as well as the g
 
     display("Producer.", base_address, 64);
     for (int i = 0; i < 64; i++) {
-        pointer += i;
+        pointer += sprintf(pointer, "%i", i);
     }
     display("Producer.", base_address, 64);
 
