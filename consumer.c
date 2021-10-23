@@ -15,7 +15,7 @@
 
 void display(char *prog, char *bytes, int n);
 
-int main() {
+int main() {    // Decent portion of code borrowed from github so that I could make a working program.
     const char *name = "/queue"; // The name of the file that we open to share memory
     const int FILESIZ = 5000;   // The size of the file that will be shared
 
