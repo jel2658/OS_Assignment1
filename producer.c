@@ -35,11 +35,11 @@ int main() { // Much code taken from lectures by the professor, as well as the g
 
     char *pointer = base_address;
 
-    display("Producer.", base_address, 64);
+    display("Producer before adding numbers. ", base_address, 64);
     for (int i = 0; i < 64; i++) {
         pointer += sprintf(pointer, "%i", i);
     }
-    display("Producer.", base_address, 64);
+    display("Producer after adding numbers. ", base_address, 64);
 
     if (munmap(base_address, FILESIZ) == -1) {
         printf("Producer failed to unmap.");
@@ -93,7 +93,7 @@ int main() { // Much code taken from lectures by the professor, as well as the g
 }
 
 void display(char *prog, char *bytes, int n) {
-    printf("Displaying %s", prog);
+    printf("Displaying %i", *prog);
     for (int i = 0; i < n; i++) {
         printf("%02x%c", bytes[i], ((i+1)%16) ? ' ' : '\n');
     }
