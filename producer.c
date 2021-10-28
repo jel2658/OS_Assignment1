@@ -48,7 +48,8 @@ int main() { // Much code taken from lectures by the professor, as well as the g
         exit(1);
     }
 
-    close(shm_fd);  // Close the shared memory.
+    close(shm_fd);      // Close the shared memory.
+    shm_unlink(shm_fd); // Unlink shared memory.
 
     /*int queue = shm_open("/queue", O_RDWR | O_CREAT, 0666);
     ftruncate(queue, sizeof(int));
