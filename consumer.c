@@ -47,15 +47,9 @@ int main() {    // Decent portion of code borrowed from github so that I could m
         exit(1);
     }
 
-    if (close(shm_fd) == -1) {  // Close the shared memory address, then check to make sure it's closed.
-        printf("Failed to close consumer.");
-        exit(1);
-    }
+    close(shm_fd);  // Close the shared memory address
 
-    if (shm_unlink(name) == -1) {   // Unlink the shared memory and check that it is.
-        printf("Consumer failed to unlink.");
-        exit(1);
-    }
+    shm_unlink(name);   // Unlink the shared memory.
 
     /*sem_t* produce = sem_open("produce", O_CREAT, 0666, 0); // This code made me confused and didn't work, but I'll keep it for documentation.
     sem_t* check = sem_open("ready", O_CREAT, 0666, 2);
