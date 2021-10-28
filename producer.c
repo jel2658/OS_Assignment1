@@ -48,10 +48,7 @@ int main() { // Much code taken from lectures by the professor, as well as the g
         exit(1);
     }
 
-    if (close(shm_fd) == -1) {
-        printf("Producer failed to close share memory segment.");
-        exit(1);
-    }
+    close(shm_fd);  // Close the shared memory.
 
     /*int queue = shm_open("/queue", O_RDWR | O_CREAT, 0666);
     ftruncate(queue, sizeof(int));
